@@ -687,6 +687,19 @@ do
     end,
   })
 
+  vim.filetype.add {
+    filename = {
+      ['docker-compose.yml'] = 'yaml.docker-compose',
+      ['docker-compose.yaml'] = 'yaml.docker-compose',
+      ['compose.yml'] = 'yaml.docker-compose',
+      ['compose.yaml'] = 'yaml.docker-compose',
+    },
+    extension = {
+      tf = 'terraform',
+      tfvars = 'terraform-vars',
+    },
+  }
+
   -- Enable the following language servers
   --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
   --  See `:help lsp-config` for information about keys and how to configure
@@ -705,6 +718,9 @@ do
     prismals = {},
     ruby_lsp = {},
     bashls = {},
+    docker_language_server = {},
+    terraformls = {},
+    jsonls = {},
 
     jdtls = {},
 
@@ -980,12 +996,12 @@ do
   -- require 'kickstart.plugins.lint'
   require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
-  -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
